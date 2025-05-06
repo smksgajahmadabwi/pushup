@@ -5,7 +5,6 @@ Untuk menghitung gerakan push-up menggunakan Teachable Machine, kamu bisa memanf
 2. Webcam
 3. HTML + JavaScript (untuk menjalankan model di browser)
 
-Logika penghitung (counter)
 🧠 Latih Model di Teachable Machine
 1. Buka Teachable Machine - Pose.
    https://teachablemachine.withgoogle.com/train/pose
