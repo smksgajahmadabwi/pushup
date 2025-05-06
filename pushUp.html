@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Push-Up Counter</title>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+  <style>
+    body { text-align: center; font-family: Arial; }
+    canvas { position: absolute; }
+  </style>
+</head>
+<body>
+  <h1>Push-Up Counter</h1>
+  <h2 id="count">Push-Ups: 0</h2>
+  <video id="webcam" autoplay playsinline width="400" height="300"></video>
+  <script>
+    const URL = "MODEL_URL_HERE"; // Ganti dengan link model Teachable Machine kamu
+    let model, webcam, maxPredictions;
+    let counter = 0;
+    let lastPose = "";
+
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+      model = await tmPose.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      webcam = new tmPose.Webcam(400, 300, true); // width, height, flip
+      await webcam.setup();
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+
+      document.body.appendChild(webcam.canvas);
+    }
+
+    async function loop() {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+      const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+      const prediction = await model.predict(posenetOutput);
+
+      let currentPose = "";
+      prediction.forEach(p => {
+        if (p.probability > 0.9) currentPose = p.className;
+      });
+
+      if (lastPose === "Down" && currentPose === "Up") {
+        counter++;
+        document.getElementById("count").innerText = "Push-Ups: " + counter;
+      }
+
+      if (currentPose) lastPose = currentPose;
+    }
+
+    init();
+  </script>
+</body>
+</html>
