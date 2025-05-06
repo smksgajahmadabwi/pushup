@@ -9,11 +9,11 @@ Untuk menghitung gerakan push-up menggunakan Teachable Machine, kamu bisa memanf
 1. Buka Teachable Machine - Pose.
    https://teachablemachine.withgoogle.com/train/pose
 2. Buat 2 kelas:
--> Down – posisi saat dada mendekati lantai
--> Up – posisi saat tangan lurus, tubuh terangkat
-3. Rekam video untuk masing-masing pose menggunakan webcam (ambil beberapa sudut untuk akurasi).
-4. Klik Train Model, lalu Export Model → pilih TensorFlow.js dan salin link model
-5. Masukkan link model pada Skrip pushUp.html
+   -> Down – posisi saat dada mendekati lantai
+   -> Up – posisi saat tangan lurus, tubuh terangkat
+4. Rekam video untuk masing-masing pose menggunakan webcam (ambil beberapa sudut untuk akurasi).
+5. Klik Train Model, lalu Export Model → pilih TensorFlow.js dan salin link model
+6. Masukkan link model pada Skrip pushUp.html
 
 🔁 Logika Prinsip Kerja:
 Deteksi transisi Dari "Down" ke "Up" sebagai 1 push-up.
