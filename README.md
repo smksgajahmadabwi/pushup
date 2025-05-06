@@ -14,3 +14,6 @@ Logika penghitung (counter)
 4. Rekam video untuk masing-masing pose menggunakan webcam (ambil beberapa sudut untuk akurasi).
 5. Klik Train Model, lalu Export Model → pilih TensorFlow.js dan salin link model
 6. Masukkan link model pada Skrip pushUp.html
+
+
+Berlaku untuk semua GERAKAN OLAH RAGA
